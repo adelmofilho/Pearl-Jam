@@ -17,22 +17,21 @@ verify_brefore_install <- function(packnames){
 
 define_license <- function(license) {
   
-  # license_slug <- tolower(license)
-  # 
-  # if (license_slug == "mit") {
-  #   
-  #   usethis::use_mit_license() 
-  #   
-  # } else if (license_slug == "gpl3") {
-  #   
-  #   usethis::use_gpl3_license()
-  #   
-  # } else {
-  #   
-  #   usethis::use_gpl3_license()
-  #   
-  # }
-  print(license)
+  license_slug <- tolower(license)
+
+  if (license_slug == "mit") {
+
+    usethis::use_mit_license()
+
+  } else if (license_slug == "gpl3") {
+
+    usethis::use_gpl3_license()
+
+  } else {
+
+    usethis::use_gpl3_license()
+
+  }
 }
 
 verify_brefore_install("usethis")
