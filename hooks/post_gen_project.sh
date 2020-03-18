@@ -13,12 +13,32 @@ verify_brefore_install <- function(packnames){
 	}
 }
 
-# Uitliza 
+# Define licença do projeto
+
+define_license <- function(license) {
+  
+  license_slug <- tolower(license)
+  
+  if (license_slug == "mit") {
+    
+    usethis::use_mit_license() 
+    
+  } else if (license_slug == "gpl3") {
+    
+    usethis::use_gpl3_license()
+    
+  } else {
+    
+    usethis::use_gpl3_license()
+    
+  }
+}
 
 verify_brefore_install("usethis")
 
-usethis::use_readme_md()
+define_license({{cookiecutter.license}})
 
+  
 # Criação da virtualenv para R
 
 verify_brefore_install("renv")
