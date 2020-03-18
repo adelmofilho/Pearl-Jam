@@ -6,7 +6,7 @@
 
 verify_brefore_install <- function(packname){
 
-	if(!packname %in% installed_packages()) install.packages(packname, repos="https://cloud.r-project.org/")
+	if(!packname %in% installed.packages()) install.packages(packname, repos="https://cloud.r-project.org/")
 
 }
 
