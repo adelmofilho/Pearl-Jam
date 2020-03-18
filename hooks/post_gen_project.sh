@@ -37,6 +37,8 @@ define_license <- function(license) {
 
 }
 
+system("ls")
+
 verify_brefore_install("usethis")
 
 define_license("{{cookiecutter.license}}")
