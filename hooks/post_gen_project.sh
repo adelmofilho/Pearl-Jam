@@ -18,10 +18,12 @@ verify_brefore_install <- function(packnames){
 define_license <- function(license) {
   
   license_slug <- tolower(license)
+  
+  usethis::use_mit_license(license_slug)
 # 
 #   if (license_slug == "mit") {
 # 
-#     usethis::use_mit_license(license_slug)
+#     
 # 
 #   } else if (license_slug == "gpl3") {
 # 
@@ -36,7 +38,7 @@ define_license <- function(license) {
 }
 
 verify_brefore_install("usethis")
-usethis::proj_get()
+
 define_license("{{cookiecutter.license}}")
 
   
