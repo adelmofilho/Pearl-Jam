@@ -17,7 +17,7 @@ verify_brefore_install <- function(packnames){
 
 define_license <- function(license) {
   
-  # license_slug <- tolower(license)
+  license_slug <- tolower(license)
   # 
   # if (license_slug == "mit") {
   # 
