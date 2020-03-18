@@ -34,9 +34,9 @@ define_license <- function(license) {
 #   }
 
 }
-proj_get()
-verify_brefore_install("usethis")
 
+verify_brefore_install("usethis")
+usethis::proj_get()
 define_license("{{cookiecutter.license}}")
 
   
