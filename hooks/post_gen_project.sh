@@ -36,7 +36,7 @@ define_license <- function(license) {
 
 verify_brefore_install("usethis")
 
-define_license(paste({{cookiecutter.license}}))
+define_license("({{cookiecutter.license}})")
 
   
 # Criação da virtualenv para R
