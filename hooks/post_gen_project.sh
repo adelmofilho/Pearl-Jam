@@ -16,7 +16,7 @@ verify_brefore_install <- function(packnames){
 
 # Criação do .lintr
 
-verify_brefore_install(c("dplyr", "magrittr", "lintr")
+verify_brefore_install(c("dplyr", "magrittr", "lintr"))
 
 lintr::lint_package() %>%
     as.data.frame %>%
