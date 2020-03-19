@@ -17,16 +17,32 @@ verify_brefore_install <- function(packnames){
 
 # Criação da virtualenv para R
 
+verify_brefore_install("dplyr", "magrittr")
+
 verify_brefore_install("renv")
 
 renv::init()
 
 # Instalação de pacotes
 
-pkgs <- c("usethis", "devtools", "testthat")
+pkgs <- c("usethis", "devtools", "testthat", "lintr")
 
-renv::install("devtools")
+renv::install(pkgs)
 
 # Criação do diretório de testes
 
 usethis::use_testthat()
+
+# Criação do .lintr
+
+lintr::lint_package() %>%
+    as.data.frame %>%
+    group_by(linter) %>%
+    tally(sort = TRUE) %$%
+    sprintf("linters: with_defaults(\n    %s\n    dummy_linter = NULL\n  )\n",
+            paste0(linter, " = NULL, # ", n, collapse = "\n    ")) %>%
+    cat(file = ".lintr")
+
+sprintf("exclusions: list(\n    %s\n  )\n",
+        paste0('"', excluded_files, '"', collapse = ",\n    ")) %>%
+    cat(file = ".lintr", append = TRUE)
