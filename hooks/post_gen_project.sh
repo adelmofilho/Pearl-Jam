@@ -17,7 +17,7 @@ verify_brefore_install <- function(packnames){
 
 # Criação da virtualenv para R
 
-verify_brefore_install("dplyr", "magrittr")
+verify_brefore_install(c("dplyr", "magrittr"))
 
 verify_brefore_install("renv")
 
