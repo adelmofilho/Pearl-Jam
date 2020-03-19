@@ -15,8 +15,6 @@ verify_brefore_install <- function(packnames){
 
 # 
 
-verify_brefore_install("usethis")
-
 # Criação da virtualenv para R
 
 verify_brefore_install("renv")
@@ -25,4 +23,10 @@ renv::init()
 
 # Instalação de pacotes
 
+pkgs <- c("usethis", "devtools", "testthat")
+
 renv::install("devtools")
+
+# Criação do diretório de testes
+
+usethis::use_testthat()
