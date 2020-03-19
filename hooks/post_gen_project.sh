@@ -21,6 +21,13 @@ verify_brefore_install(c("dplyr", "magrittr", "lintr"))
 library(magrittr)
 library(dplyr)
 
+excluded_files <- c(
+    list.files("data",      recursive = TRUE, full.names = TRUE),
+    list.files("docs",      recursive = TRUE, full.names = TRUE),
+    list.files("artifacts",  recursive = TRUE, full.names = TRUE),
+    list.files("man",       recursive = TRUE, full.names = TRUE)
+)
+
 lintr::lint_package() %>%
     as.data.frame %>%
     group_by(linter) %>%
