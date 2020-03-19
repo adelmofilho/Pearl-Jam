@@ -17,7 +17,7 @@ verify_brefore_install <- function(packnames){
 
 verify_brefore_install("usethis")
 print(getwd())
-usethis::usethis::create_package(getwd())
+usethis::create_package(getwd())
 
 
 # Criação da virtualenv para R
