@@ -16,7 +16,7 @@ verify_brefore_install <- function(packnames){
 # 
 
 verify_brefore_install("usethis")
-print(getwd())
+
 usethis::create_package(getwd())
 
 
@@ -25,3 +25,7 @@ usethis::create_package(getwd())
 verify_brefore_install("renv")
 
 renv::init()
+
+# Instalação de pacotes
+
+renv::install("devtools")
