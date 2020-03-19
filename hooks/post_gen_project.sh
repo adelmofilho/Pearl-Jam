@@ -18,6 +18,9 @@ verify_brefore_install <- function(packnames){
 
 verify_brefore_install(c("dplyr", "magrittr", "lintr"))
 
+library(magrittr)
+library(dplyr)
+
 lintr::lint_package() %>%
     as.data.frame %>%
     group_by(linter) %>%
