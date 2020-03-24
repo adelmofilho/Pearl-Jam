@@ -11,13 +11,9 @@
 
 <h3 align="center">Estrutura de projetos de ciência de dados com a linguagem R</h3>
 
-Este [cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.0/) tem como objetivo reunir melhores práticas para desenvolvimento de projetos de ciência de dados que utilizam a linguagem R.
-
-<br>
-
 ### Pré-requisitos
 
-Instale o cookiecutter em sua máquina conforme [documentação oficial](https://cookiecutter.readthedocs.io/en/1.7.0/installation.html)
+Instale o cookiecutter em sua máquina conforme [documentação oficial](https://cookiecutter.readthedocs.io/en/1.7.0/installation.html).
 
 
 ### Instalação
@@ -35,6 +31,12 @@ cookiecutter https://github.com/adelmofilho/Pearl-Jam.git
 
 cookiecutter git+ssh://git@github.com/adelmofilho/Pearl-Jam.git
 ``` 
+
+### Premissas
+
+A estrutura de diretórios e arquivos criados na execução deste cookiecutter possui as seguintes premissas:
+
+- [x] Uso de controle de versão de código com git 
 
 
 
