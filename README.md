@@ -41,11 +41,11 @@ cookiecutter git+ssh://git@github.com/adelmofilho/Pearl-Jam.git
 
 A estrutura de diretórios e arquivos criados na execução deste cookiecutter possui as seguintes premissas:
 
-- [x] Uso de controle de versão de código com git;
-- [x] Controle de versão de pacotes R via pacote[`{renv}`](https://rstudio.github.io/renv/articles/renv.html);
-- [x] Encapsulamento de funções e códigos como um pacote R via pacote [{usethis}`](https://usethis.r-lib.org/);
+- [x] Uso de controle de versão de código com git
+- [x] Controle de versão de pacotes R via pacote[`{renv}`](https://rstudio.github.io/renv/articles/renv.html)
+- [x] Encapsulamento de funções e códigos como um pacote R via pacote [`{usethis}`](https://usethis.r-lib.org/)
 - [x] Criação de testes unitários via [`{testhat}`](https://testthat.r-lib.org/)
-- [x] Documentação via pacote [`{roxygen2}`](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html);
+- [x] Documentação via pacote [`{roxygen2}`](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html)
 - [x] Uso de pipelines para garantir reproduzibilidade das análises via pacote [`{drake}`](https://docs.ropensci.org/drake/)
 - [x] Versionamento de dados via software [`dvc`](https://dvc.org/)
 - [x] Ajuste de forma e estilo de código via pacote [`lintR`](https://github.com/jimhester/lintr)
@@ -55,6 +55,7 @@ A estrutura de diretórios e arquivos criados na execução deste cookiecutter p
 
 ### Estrutura de diretórios
 
+A instalação desse cookiecutter resultará no seguinte template:
 
 ```
 ├── LICENSE
