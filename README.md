@@ -11,9 +11,31 @@
 
 <h3 align="center">Estrutura de projetos de ciência de dados com a linguagem R</h3>
 
+Este [cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.0/) tem como objetivo reunir melhores práticas para desenvolvimento de projetos de ciência de dados que utilizam a linguagem R.
+
 <br>
 
-## Por quê se preocupar com a estrutura de diretórios de um projeto?
+### Pré-requisitos
+
+Instale o cookiecutter em sua máquina conforme [documentação oficial](https://cookiecutter.readthedocs.io/en/1.7.0/installation.html)
+
+
+### Instalação
+
+Para iniciar um novo projeto com este template, execute:
+
+```sh
+cookiecutter gh:adelmofilho/Pearl-Jam
+```
+
+Ou, use uma das seguintes alternativas:
+
+```sh
+cookiecutter https://github.com/adelmofilho/Pearl-Jam.git
+
+cookiecutter git+ssh://git@github.com/adelmofilho/Pearl-Jam.git
+``` 
+
 
 
 
