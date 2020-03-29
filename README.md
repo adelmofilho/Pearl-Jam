@@ -13,13 +13,21 @@
 
 <br>
 
-### Pré-requisitos
+## Pré-requisitos
 
-Instale o cookiecutter em sua máquina conforme [documentação oficial](https://cookiecutter.readthedocs.io/en/1.7.0/installation.html).
+- Instale o `git` conforme [documentação oficial](https://git-scm.com/downloads).
+
+- Instale o `cookiecutter` em sua máquina conforme [documentação oficial](https://cookiecutter.readthedocs.io/en/1.7.0/installation.html).
+
+### Opcional
+
+- Instale o `docker` e `docker compose` conforme [documentação oficial](https://docs.docker.com/compose/install/)
+
+- Instale o `DVC` (Data Version Controle) pelo [site oficial](https://dvc.org/)
 
 <br>
 
-### Instalação
+## Instalação
 
 Para iniciar um novo projeto com este template, execute:
 
@@ -35,9 +43,19 @@ cookiecutter https://github.com/adelmofilho/Pearl-Jam.git
 cookiecutter git+ssh://git@github.com/adelmofilho/Pearl-Jam.git
 ```
 
+## Proposta
+
+A proposta desse template cookiecutter é de atender projetos de ciência de dados que envolvam a criação e experimentação de modelos estatisticos e de machine learning com R.
+
+Para isso, é fornecida uma imagem docker que encapsula todo o ambiente de desenvolvimento do projeto e ferramentas para versionar pacotes e dados.
+
+É esperado que o processo de modelagem, seja acompanhado da construção de um pacote R que encapsule as funções referentes a treinamento, *data preparation* e avaliação do modelo. Desta forma, é possível submeter o código criado a boas práticas de programação: testes unitários, ajuste de estilo e forma.
+
+Finalmente, para fins de experimentação ou produtização, as funções nesse pacote R poderão ser estruturadas na forma de um workflow *schedulavel*.
+
 <br>
 
-### Premissas
+## Premissas
 
 A estrutura de diretórios e arquivos criados na execução deste cookiecutter possui as seguintes premissas:
 
@@ -53,52 +71,67 @@ A estrutura de diretórios e arquivos criados na execução deste cookiecutter p
 
 <br>
 
-### Estrutura de diretórios
+## Estrutura de diretórios
 
 A instalação desse cookiecutter resultará no seguinte template:
 
 ```
-├── LICENSE
-├── Makefile           <- Makefile with commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
+.
+├── artifacts
 ├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── src                <- Source code for use in this project.
-│   ├── __init__.py    <- Makes src a Python module
-│   │
-│   ├── data           <- Scripts to download or generate data
-│   │   └── make_dataset.py
-│   │
-│   ├── features       <- Scripts to turn raw data into features for modeling
-│   │   └── build_features.py
-│   │
-│   ├── models         <- Scripts to train models and then use trained models to make
-│   │   │                 predictions
-│   │   ├── predict_model.py
-│   │   └── train_model.py
-│   │
-│   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-│       └── visualize.py
-│
-└── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
+│   ├── raw
+│   ├── interim
+│   └── processed
+├── docs
+├── man
+├── R
+├── scripts
+├── renv
+│   ├── library
+│   ├── staging
+│   ├── activate.R
+│   └── settings.dcf
+├── tests
+│   ├── testthat
+│   └── testthat.R
+├── workflow
+├── {project_name}.Rproj
+├── DESCRIPTION
+├── docker-compose.yml
+├── Dockerfile
+├── NAMESPACE
+└── renv.lock
 ```
+
+`artifacts` deve conter arquivos serializados (`.rds`, `.Rdata`), chaves de acesso (`.pub`, `.oath`), mapas (`.shp`) e outros tipos de arquivos não relacionados a códigos e dados.
+
+`data` deve conter base dados (`.csv`, `.parquet`, `.png`). A divisão em `raw`, `interim`, `processed` se refere ao grau de trabalho, qualidade dos dados.
+
+`docs` está associado a textos, notas, papers, apresentações utéis no contexto do projeto sendo executado.
+
+`man` é o diretório que contém a documentação gerada de forma automática pelo `roxygen2`.
+
+`R` contém funções do pacote R criado em conjunto com o projeto.
+
+`scripts` contem scripts R e notebooks R utilizados para experimentação e prototipação de funções que farão parte do pacote R.
+
+`renv` é o diretório criado de forma automática para o versionamento dos pacotes R.
+
+`tests` deve conter testes unitários para o pacote R conforme padrão do pacote `{testthat}`.
+
+`workflow` contém as [dags](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (pipelines) de código a partir do pacote `{drake}`.
+
+### Arquivos
+
+`{project_name}.Rproj` é o arquivo de configurações de projeto do Rstudio
+
+`DESCRIPTION` é o arquivo de metadados do pacote R criado com esse projeto.
+
+`Dockerfile` contém as instruções para criação de um container docker onde será desenvolvido o projeto.
+
+`docker-compose.yml` contém as instruções para execução do container docker criado pelo arquivo DOckerfile.
+
+`NAMESPACE` é o arquivo que define o namespace do pacote R criado com esse projeto.
+
+`renv.lock` contém a versão dos pacotes utilizados nesse projeto.
+
