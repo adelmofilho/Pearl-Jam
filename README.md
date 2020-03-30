@@ -138,10 +138,18 @@ A instalação desse cookiecutter resultará no seguinte template:
 
 ## Uso proposto
 
+### Acessando o RStudio Server
+
 Após instalar este template cookiecutter, acesse o diretório raiz do projeto e execute o seguinte comando.
 
 ```sh
 docker-compose up
 ```
 
-O *build* de uma imagem docker iniciará (may take some time, make a coffee :coffee:)
+O *build* de uma imagem docker iniciará (may take some time, make a coffee :coffee:).
+
+Após concluido a etapa de *build* acesse seu navegador com a seguinte url:
+
+`localhost:8787`
+
+A tela de login RStudio Server surgirá. Para acessar utilize o login e senha contidos no arquivo `docker-compose.yml`. Por padrão, acesse usando `rstudio` para ambos.
