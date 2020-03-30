@@ -56,4 +56,6 @@ renv::install(pkgs)
 
 usethis::use_testthat()
 
+# Inicialização do git
 
+usethis::use_git()
