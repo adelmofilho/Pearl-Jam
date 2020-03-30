@@ -117,7 +117,7 @@ RUN git config --system credential.helper 'cache --timeout=3600' \
 
 WORKDIR home/{project_slug}
 
-RUN chmod 777 home/{{project_slug}}
+RUN chmod 777 home/{{cookiecutter.project_slug}}
 RUN chmod 777 /home
 
 CMD ["/init"]
