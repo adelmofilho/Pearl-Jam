@@ -115,7 +115,7 @@ RUN git config --system credential.helper 'cache --timeout=3600' \
           > /home/rstudio/.rstudio/monitored/user-settings/user-settings \
  && chown -R rstudio:rstudio /home/rstudio/.rstudio
 
-WORKDIR home/{project_slug}
+WORKDIR home/{{cookiecutter.project_slug}}
 
 RUN chmod 777 home/{{cookiecutter.project_slug}}
 RUN chmod 777 /home
