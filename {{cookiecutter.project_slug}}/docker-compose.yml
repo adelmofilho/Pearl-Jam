@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  rstudio:
+    build: .
+    ports:
+      - "8787:8787"
+    volumes:
+      - /home/${USER}/.local/share/renv:/home/rstudio/.local/share/renv
+      - ${PWD}:/project

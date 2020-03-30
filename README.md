@@ -42,6 +42,7 @@ cookiecutter https://github.com/adelmofilho/Pearl-Jam.git
 
 cookiecutter git+ssh://git@github.com/adelmofilho/Pearl-Jam.git
 ```
+<br>
 
 ## Proposta
 
@@ -113,7 +114,7 @@ A instalação desse cookiecutter resultará no seguinte template:
 
 `R` contém funções do pacote R criado em conjunto com o projeto.
 
-`scripts` contem scripts R e notebooks R utilizados para experimentação e prototipação de funções que farão parte do pacote R.
+`scripts` contem scripts e notebooks R utilizados para experimentação e prototipação de funções que farão parte do pacote R.
 
 `renv` é o diretório criado de forma automática para o versionamento dos pacotes R.
 
@@ -135,3 +136,6 @@ A instalação desse cookiecutter resultará no seguinte template:
 
 `renv.lock` contém a versão dos pacotes utilizados nesse projeto.
 
+## Uso proposto
+
+Após instalar este template cookiecutter, acesse o diretório raiz do projeto 

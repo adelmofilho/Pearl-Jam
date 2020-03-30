@@ -1,0 +1,123 @@
+FROM ubuntu:18.04
+
+LABEL org.label-schema.license="GPL-3.0" \
+      org.label-schema.vcs-url="https://github.com/adelmofilho/Pearl-Jam/{{cookiecutter.project_slug}}/Dockerfile" \
+      org.label-schema.vendor="Hope Clouds Observation" \
+      maintainer="Adelmo Filho <adelmo.aguiar.filho@gmail.com>"
+
+# Assumir defaults nas instalações 
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Instalar dependências
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    apt-utils=1.6.12 \
+    gfortran=4:7.4.0-1ubuntu2.3 \
+    git=1:2.17.1-1ubuntu0.5 \
+    g++=4:7.4.0-1ubuntu2.3 \
+    libreadline-dev=7.0-3 \
+    libx11-dev=2:1.6.4-3ubuntu0.2 \
+    libxt-dev=1:1.1.5-1 \
+    libpng-dev=1.6.34-1ubuntu0.18.04.2 \
+    libjpeg-dev=8c-2ubuntu8 \
+    libcairo2-dev=1.15.10-2ubuntu0.1 \   
+    libcurl4-openssl-dev=7.58.0-2ubuntu3.8 \
+    libssl-dev=1.1.1-1ubuntu2.1~18.04.5 \ 
+    libxml2-dev=2.9.4+dfsg1-6.1ubuntu1.2 \
+    libudunits2-dev=2.2.26-1 \
+    libgdal-dev=2.2.3+dfsg-2 \
+    libbz2-dev=1.0.6-8.1ubuntu0.2 \
+    libzstd-dev=1.3.3+dfsg-2ubuntu1.1 \
+    liblzma-dev=5.2.2-1.3 \
+    locales=2.27-3ubuntu1 \
+    openjdk-8-jdk=8u232-b09-0ubuntu1~18.04.1 \
+    screen=4.6.2-1ubuntu1 \
+    texinfo=6.5.0.dfsg.1-2 \
+    texlive=2017.20180305-1 \
+    texlive-fonts-extra=2017.20180305-2 \
+    vim=2:8.0.1453-1ubuntu1.1 \
+    wget=1.19.4-1ubuntu2.2 \
+    xvfb=2:1.19.6-1ubuntu4.3 \
+&& rm -rf /var/lib/apt/lists/*
+
+# Ajuste o locale
+RUN locale-gen pt_BR.UTF-8
+ENV LANG pt_BR.UTF-8
+ENV LANGUAGE pt_BR.UTF-8
+ENV LC_ALL pt_BR.UTF-8
+
+# Instalar R
+
+RUN wget https://cran.rstudio.com/src/base/R-3/R-3.6.3.tar.gz && \
+    tar zxvf R-3.6.3.tar.gz && \
+    rm R-3.6.2.tar.gz
+
+WORKDIR /R-3.6.3
+
+RUN ./configure --with-cairo --with-jpeglib --enable-R-shlib --with-blas --with-lapack && \ 
+    make && \
+    make install
+
+# Instalar renv
+ENV RENV_VERSION 0.9.2-20
+RUN R -e "install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))"
+RUN R -e "remotes::install_github('rstudio/renv@${RENV_VERSION}')"
+
+# Criação do usuário para rstudio-server
+ENV USER rstudio
+ENV PASSWORD rstudio
+
+RUN useradd rstudio \
+  && echo "${USER}:${PASSWORD}" | chpasswd \
+  && mkdir /home/${USER} \
+  && chown ${USER}:${USER} /home/${USER}
+
+# Instalar dependências
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gdebi-core=0.9.5.7+nmu2 \ 
+    lsb-release=9.20170808ubuntu1 \
+    libapparmor1=2.12-4ubuntu5.1 \ 
+    libedit2=3.1-20170329-1 \
+    libclang-dev=1:6.0-41~exp5~ubuntu1 \
+    sudo=1.8.21p2-3ubuntu1.2 \
+    psmisc=23.1-1ubuntu0.1 \
+    qpdf=8.0.2-3 \
+&& rm -rf /var/lib/apt/lists/*
+
+# Instala rstudio-server
+RUN wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5033-amd64.deb
+
+RUN gdebi -n rstudio-server-1.2.5033-amd64.deb
+
+RUN mkdir -p /etc/R \
+  && echo 'if(is.na(Sys.getenv("HTTR_LOCALHOST", unset=NA))) { options(httr_oob_default = TRUE) }' >> /usr/local/lib/R/etc/Rprofile.site \
+  && echo "PATH=${PATH}" >> /usr/local/lib/R/etc/Renviron \
+  && echo 'rsession-which-r=/usr/local/bin/R' >> /etc/rstudio/rserver.conf \
+  && echo 'lock-type=advisory' >> /etc/rstudio/file-locks
+
+# Configura sistema s6 para inicialização do rstudio-server com o container
+RUN git config --system credential.helper 'cache --timeout=3600' \
+ && git config --system push.default simple \
+ && wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/download/v1.21.7.0/s6-overlay-amd64.tar.gz \
+ && tar xzf /tmp/s6-overlay-amd64.tar.gz -C / \
+ && mkdir -p /etc/services.d/rstudio \
+ && echo "#!/usr/bin/with-contenv bash \
+          \n## load /etc/environment vars first: \
+  		  \n for line in $( cat /etc/environment ) ; do export $line ; done \
+          \n exec /usr/lib/rstudio-server/bin/rserver --server-daemonize 0" \
+          > /etc/services.d/rstudio/run \
+ && echo "#!/bin/bash \
+          \n rstudio-server stop" \
+          > /etc/services.d/rstudio/finish \
+ && mkdir -p /home/rstudio/.rstudio/monitored/user-settings \
+ && echo "alwaysSaveHistory='0' \
+          \nloadRData='0' \
+          \nsaveAction='0'" \
+          > /home/rstudio/.rstudio/monitored/user-settings/user-settings \
+ && chown -R rstudio:rstudio /home/rstudio/.rstudio
+
+WORKDIR /project
+
+RUN chmod 777 /project
+RUN chmod 777 /home
+
+CMD ["/init"]
