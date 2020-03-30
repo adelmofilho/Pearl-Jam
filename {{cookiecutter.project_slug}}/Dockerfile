@@ -49,7 +49,7 @@ ENV LC_ALL pt_BR.UTF-8
 
 RUN wget https://cran.rstudio.com/src/base/R-3/R-3.6.3.tar.gz && \
     tar zxvf R-3.6.3.tar.gz && \
-    rm R-3.6.2.tar.gz
+    rm R-3.6.3.tar.gz
 
 WORKDIR /R-3.6.3
 

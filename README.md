@@ -138,4 +138,10 @@ A instalação desse cookiecutter resultará no seguinte template:
 
 ## Uso proposto
 
-Após instalar este template cookiecutter, acesse o diretório raiz do projeto 
+Após instalar este template cookiecutter, acesse o diretório raiz do projeto e execute o seguinte comando.
+
+```sh
+docker-compose up
+```
+
+O *build* de uma imagem docker iniciará (may take some time, make a coffee :coffee:)
