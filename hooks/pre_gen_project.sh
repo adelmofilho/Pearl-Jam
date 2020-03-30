@@ -6,7 +6,7 @@
 
 MODULE_REGEX = '^[_a-zA-Z][_a-zA-Z0-9]+$'
 
-module_name = {{cookiecutter.project_slug}}
+module_name = "{{cookiecutter.project_slug}}"
 
 match = grep(MODULE_REGEX,module_name, value = TRUE)
 
