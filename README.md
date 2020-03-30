@@ -136,7 +136,24 @@ A instalação desse cookiecutter resultará no seguinte template:
 
 `renv.lock` contém a versão dos pacotes utilizados nesse projeto.
 
-## Uso proposto
+<br>
+
+## Baby Steps
+
+### Executando o Cookiecutter
+
+Execute o seguinte comando para iniciar a execução deste Cookiecutter.
+
+```sh
+cookiecutter gh:adelmofilho/Pearl-Jam
+```
+
+Você será questionado de forma interativa sobre alguns parâmetros e nomes para associar ao seu projeto:
+
+`{project_slug}`: nome do projeto
+`{username}`: username do autor do projeto
+`{email}`: email do autor do projeto
+`{license}`: licensa a ser associada ao projeto (MIT ou GPL3)
 
 ### Acessando o RStudio Server
 
@@ -153,3 +170,23 @@ Após concluido a etapa de *build* acesse seu navegador com a seguinte url:
 `localhost:8787`
 
 A tela de login RStudio Server surgirá. Para acessar utilize o login e senha contidos no arquivo `docker-compose.yml`. Por padrão, acesse usando `rstudio` para ambos.
+
+### Iniciando seu projeto
+
+No menu do RStudio Server, selecione os campos: `File > Open Project`.
+
+Na caixa de diálogo que abrirá, entre com o caminho para o diretório de seu projeto, por padrão, `/{project_slug}`.
+
+### Conecte seu projeto ao Github
+
+Seu projeto por padrão já é um repositório git. Contudo, não está conectado ao Github. 
+
+Para adicionar seu projeto a um repositório no Github, execute os seguintes comandos substituindo `{gituser}` pelo seu usuário no github e `{project_slug}` por aquele informado na criação do Cookiecutter.
+
+```sh
+git remote add origin git@github.com:{gituser}/{project_slug}.git
+```
+
+```sh
+git push -u origin master
+```

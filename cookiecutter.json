@@ -1,4 +1,6 @@
 {
   "project_slug": "projectname",
+  "username": "default",
+  "email":"default@default.com",
   "license": "mit"
 }
