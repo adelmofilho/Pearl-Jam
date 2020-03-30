@@ -150,10 +150,10 @@ cookiecutter gh:adelmofilho/Pearl-Jam
 
 Você será questionado de forma interativa sobre alguns parâmetros e nomes para associar ao seu projeto:
 
-`{project_slug}`: nome do projeto
-`{username}`: username do autor do projeto
-`{email}`: email do autor do projeto
-`{license}`: licensa a ser associada ao projeto (MIT ou GPL3)
+`{project_slug}`: nome do projeto  
+`{username}`: username do autor do projeto  
+`{email}`: email do autor do projeto  
+`{license}`: licensa a ser associada ao projeto (MIT ou GPL3)  
 
 ### Acessando o RStudio Server
 
@@ -169,7 +169,7 @@ Após concluido a etapa de *build* acesse seu navegador com a seguinte url:
 
 `localhost:8787`
 
-A tela de login RStudio Server surgirá. Para acessar utilize o login e senha contidos no arquivo `docker-compose.yml`. Por padrão, acesse usando `rstudio` para ambos.
+A tela de login RStudio Server surgirá. Por padrão, acesse usando `rstudio` para ambos, login e senha.
 
 ### Iniciando seu projeto
 
