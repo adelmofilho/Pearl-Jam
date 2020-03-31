@@ -6,4 +6,4 @@ services:
       - "8787:8787"
     volumes:
       - /home/${USER}/.local/share/renv:/home/rstudio/.local/share/renv
-      - ${PWD}:/project
+      - ${PWD}:/{{cookiecutter.project_slug}}
