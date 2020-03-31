@@ -62,6 +62,9 @@ usethis::use_git()
 
 # Licença de Uso
 
+options(usethis.full_name = "{{cookiecutter.username}}")
+
+
 if(tolower("{{cookiecutter.license}}")=="mit"){
 
  usethis::use_mit_license()
