@@ -74,3 +74,6 @@ if(tolower("{{cookiecutter.license}}")=="mit"){
 # Inicialização do git
 
 usethis::use_git(message = "Initial commit")
+
+system('git config --global user.email "{{cookiecutter.email}}"')
+system('git config --global user.name "{{cookiecutter.username}}"')
