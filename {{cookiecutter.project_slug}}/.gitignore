@@ -37,3 +37,8 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Renv
+renv/library/*
+renv/python/*
+renv/staging/*
