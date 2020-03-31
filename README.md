@@ -50,7 +50,7 @@ A proposta desse template cookiecutter é de atender projetos de ciência de dad
 
 Para isso, é fornecida uma imagem docker que encapsula todo o ambiente de desenvolvimento do projeto e ferramentas para versionar pacotes e dados.
 
-É esperado que o processo de modelagem, seja acompanhado da construção de um pacote R que encapsule as funções referentes a treinamento, *data preparation* e avaliação do modelo. Desta forma, é possível submeter o código criado a boas práticas de programação: testes unitários, ajuste de estilo e forma.
+É esperado que o processo de modelagem, seja acompanhado da construção de um pacote R que encapsule as funções referentes a treinamento, *data preparation* e avaliação do modelo. Desta forma, é possível desenvolver o código seguindo boas práticas de programação: testes unitários, ajuste de estilo e forma.
 
 Finalmente, para fins de experimentação ou produtização, as funções nesse pacote R poderão ser estruturadas na forma de um workflow *schedulavel*.
 

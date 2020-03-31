@@ -56,10 +56,6 @@ renv::install(pkgs)
 
 usethis::use_testthat()
 
-# Inicialização do git
-
-usethis::use_git()
-
 # Licença de Uso
 
 options(usethis.full_name = "{{cookiecutter.username}}")
@@ -74,3 +70,7 @@ if(tolower("{{cookiecutter.license}}")=="mit"){
 
   usethis::use_gpl3_license()
 }
+
+# Inicialização do git
+
+usethis::use_git(message = "Initial commit")
