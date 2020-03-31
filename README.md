@@ -160,7 +160,7 @@ Você será questionado de forma interativa sobre alguns parâmetros e nomes par
 Após instalar este template cookiecutter, acesse o diretório raiz do projeto e execute o seguinte comando.
 
 ```sh
-docker-compose up
+docker-compose up -d
 ```
 
 O *build* de uma imagem docker iniciará (may take some time, make a coffee :coffee:).

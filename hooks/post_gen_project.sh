@@ -59,3 +59,15 @@ usethis::use_testthat()
 # Inicialização do git
 
 usethis::use_git()
+
+# Licença de Uso
+
+if(tolower("{{cookiecutter.license}}")=="mit"){
+
+ usethis::use_mit_license()
+
+} else {
+
+
+  usethis::use_gpl3_license()
+}
