@@ -7,6 +7,7 @@
 ^artifacts$
 ^data$
 ^docs$
+^scripts$
 ^workflow$
 ^Dockerfile$
 ^docker-compose\.yml$
