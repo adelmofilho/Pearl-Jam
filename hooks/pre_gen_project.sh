@@ -4,7 +4,7 @@
 # Verifica se o nome do projeto é válido
 
 
-MODULE_REGEX = '^[_a-zA-Z][_a-zA-Z0-9]+$'
+MODULE_REGEX = '^[_a-zA-Z][_a-zA-Z0-9\-]+$'
 
 module_name = "{{cookiecutter.project_slug}}"
 
