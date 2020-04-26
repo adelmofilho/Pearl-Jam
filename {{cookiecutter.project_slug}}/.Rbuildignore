@@ -8,6 +8,7 @@
 ^data$
 ^docs$
 ^scripts$
-^workflow$
+^configs$
+^deploy$
 ^Dockerfile$
 ^docker-compose\.yml$

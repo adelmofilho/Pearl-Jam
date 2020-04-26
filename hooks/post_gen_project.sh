@@ -21,13 +21,6 @@ verify_brefore_install(c("dplyr", "magrittr", "lintr"))
 library(magrittr)
 library(dplyr)
 
-excluded_files <- c(
-    list.files("data",      recursive = TRUE, full.names = TRUE),
-    list.files("docs",      recursive = TRUE, full.names = TRUE),
-    list.files("artifacts",  recursive = TRUE, full.names = TRUE),
-    list.files("man",       recursive = TRUE, full.names = TRUE)
-)
-
 lintr::lint_package() %>%
     as.data.frame %>%
     group_by(linter) %>%
@@ -35,10 +28,6 @@ lintr::lint_package() %>%
     sprintf("linters: with_defaults(\n    %s\n    dummy_linter = NULL\n  )\n",
             paste0(linter, " = NULL, # ", n, collapse = "\n    ")) %>%
     cat(file = ".lintr")
-
-sprintf("exclusions: list(\n    %s\n  )\n",
-        paste0('"', excluded_files, '"', collapse = ",\n    ")) %>%
-    cat(file = ".lintr", append = TRUE)
 
 # Criação da virtualenv para R
 
