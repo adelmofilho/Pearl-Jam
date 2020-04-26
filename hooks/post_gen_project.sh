@@ -14,21 +14,6 @@ verify_brefore_install <- function(packnames){
 }
 
 
-# Criação do .lintr
-
-verify_brefore_install(c("dplyr", "magrittr", "lintr"))
-
-library(magrittr)
-library(dplyr)
-
-lintr::lint_package() %>%
-    as.data.frame %>%
-    group_by(linter) %>%
-    tally(sort = TRUE) %$%
-    sprintf("linters: with_defaults(\n    %s\n    dummy_linter = NULL\n  )\n",
-            paste0(linter, " = NULL, # ", n, collapse = "\n    ")) %>%
-    cat(file = ".lintr")
-
 # Criação da virtualenv para R
 
 verify_brefore_install("renv")
